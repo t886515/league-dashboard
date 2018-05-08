@@ -1,6 +1,7 @@
 'use strict';
 // Template version: 1.3.1
 const path = require('path');
+const env = require('env');
 
 module.exports = {
   dev: {
@@ -55,7 +56,8 @@ module.exports = {
 
     productionSourceMap: true,
     // https://webpack.js.org/configuration/devtool/#production
-    devtool: '#source-map',
+    //why is there a hash in front of source-map for this?
+    devtool: 'source-map',
 
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.

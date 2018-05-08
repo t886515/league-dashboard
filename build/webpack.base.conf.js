@@ -1,21 +1,43 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
-const config = require('./config');
+const config = require('../config.js');
+const utils = require('./utils.js');
+
+//define a resolve function for absolute file path
+const resolve = directory => {
+  path.join(__dirname, '..', directory);
+};
+
+//creating linting rule
+const createLintingRule = () => ({
+  test: /\.(js|jsx)$/,
+  loader: 'eslint-loader',
+  //PROBABLY means this is happening before save/commit?
+  enforce: 'pre',
+  include: [resolve('src'), resolve(test)],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
+});
+
 //each string will be the name of the library of vendor
 //node modules!
-const VENDOR_LIBS = ['react'];
+// const VENDOR_LIBS = ['react'];
 
 module.exports = {
+  //pointing to the main folder?
+  context: path.resolve(__dirname, '../'),
   //couple different entry points to define multiple bundles with object
   // key = output js file name, and value as the entry file
   entry: {
-    bundle: './src/index.js',
-    vendor: VENDOR_LIBS
+    bundle: './src/index.js'
+    // vendor: VENDOR_LIBS
   },
   // entry: './src/index/js',
   output: {
-    path: path.resolve(path.join(__dirname, 'build')),
+    path: config.build.assetsRoot,
     // filename: 'bundle.js',
     //this will dynamically change the output name with the entry object.
     filename: '[name].js',
@@ -26,11 +48,27 @@ module.exports = {
     //file:///Users/nana/Documents/npm-project-boilerplate/build/5a5d26dc90783605883d868c3855a54f.jpg
 
     //this not only applies to "url-loader", but any loader that save a direct file path reference to a file in our output dir
-    publicPath: 'build/'
+    publicPath:
+      process.env.NODE_ENV === 'production'
+        ? config.build.assetsPublicPath
+        : config.dev.assetsPublicPath
   },
   //webpack 1 these are called loaders. webpack 2+ are called module
+  resolve: {
+    //When you import a file with these types, don't need to add .js/.jsx/.json at the end, webpack
+    //would automatically look for these file types
+    extensions: ['.js', '.jsx', '.json'],
+    //allow import SOME_FILES from '@/components' --> meaning start looking from src, so no more relative file path!! Always looking
+    //from outside! No more confusion...
+    alias: {
+      '@': resolve('src')
+    }
+  },
   module: {
     rules: [
+      //this checks for eslint boolean and decide if we want to activate eslint or not
+      //TODO using spread operator with array in case there's multiple objects of linting rules?
+      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         loader: 'babel-loader',
         //regex expression - only applies to those files ends in js
@@ -40,7 +78,14 @@ module.exports = {
         //same query
 
         //this will tell babel to not do anything inside of this folder
-        exclude: /node_modules/
+        // exclude: /node_modules/,
+
+        //this tell babel only translate these files included
+        include: [
+          resolve('src'),
+          resolve('test'),
+          resolve('node_modules/webpack-dev-server/client')
+        ]
       },
       {
         //["style-loader", "css-loader"]
