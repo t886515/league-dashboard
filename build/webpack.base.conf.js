@@ -1,12 +1,12 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
-const config = require('../config.js');
+const config = require('../config');
 const utils = require('./utils.js');
 
 //define a resolve function for absolute file path
 const resolve = directory => {
-  path.join(__dirname, '..', directory);
+  return path.join(__dirname, '..', directory);
 };
 
 //creating linting rule
@@ -18,8 +18,8 @@ const createLintingRule = () => ({
   include: [resolve('src'), resolve(test)],
   options: {
     formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
+    emitWarning: !config.dev.showEslintErrorsInOverlay,
+  },
 });
 
 //each string will be the name of the library of vendor
@@ -32,7 +32,7 @@ module.exports = {
   //couple different entry points to define multiple bundles with object
   // key = output js file name, and value as the entry file
   entry: {
-    bundle: './src/index.js'
+    bundle: './src/index.js',
     // vendor: VENDOR_LIBS
   },
   // entry: './src/index/js',
@@ -51,7 +51,7 @@ module.exports = {
     publicPath:
       process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath
+        : config.dev.assetsPublicPath,
   },
   //webpack 1 these are called loaders. webpack 2+ are called module
   resolve: {
@@ -61,18 +61,18 @@ module.exports = {
     //allow import SOME_FILES from '@/components' --> meaning start looking from src, so no more relative file path!! Always looking
     //from outside! No more confusion...
     alias: {
-      '@': resolve('src')
-    }
+      '@': resolve('src'),
+    },
   },
   module: {
     rules: [
       //this checks for eslint boolean and decide if we want to activate eslint or not
       //TODO using spread operator with array in case there's multiple objects of linting rules?
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      // ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
-        loader: 'babel-loader',
         //regex expression - only applies to those files ends in js
         test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
         //the acutal rule using babel-preset-env - use .babelrc
         //can also do query?? need to look more into this as it prompts error if no .babelrc file is specified with the
         //same query
@@ -84,8 +84,48 @@ module.exports = {
         include: [
           resolve('src'),
           resolve('test'),
-          resolve('node_modules/webpack-dev-server/client')
-        ]
+          resolve('node_modules/webpack-dev-server/client'),
+        ],
+      },
+      {
+        //$ for end of string, ? for either end e or eg
+        test: /\.(jpe?g|png|gif|svg)$/,
+        //need to add extra config to url-loader for "image size big or small determination"
+        use: [
+          {
+            loader: 'url-loader',
+            //image > 40000 kb, then save to another file, if not, add to bundle.js
+            options: {
+              limit: 40000,
+              name: utils.assetsPath('img/[name].[hash:7].[ext]'),
+            },
+          },
+          //resize/compress images for us if necessary
+          'image-webpack-loader',
+        ],
+      },
+      //checking on audio/video assets
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 40000,
+          name: utils.assetsPath('media/[name].[hash:7].[ext]'),
+        },
+      },
+      //for special font type files
+      // {
+      //   test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     limit: 40000,
+      //     name: utils.assetsPath('fonts/[name].[hash:7].[ext]'),
+      //   },
+      // },
+      //for supporting graphql query files
+      {
+        test: /\.(gql|graphql)$/,
+        loader: 'graphql-tag/loader',
       },
       {
         //["style-loader", "css-loader"]
@@ -105,38 +145,34 @@ module.exports = {
           //this ensure the style will still be applied to the html file using style-loader if things went wrong with
           //extract text plugin?
           fallback: 'style-loader',
-          use: 'css-loader'
-        })
+          use: 'css-loader',
+        }),
       },
-
-      {
-        //$ for end of string, ? for either end e or eg
-        test: /\.(jpe?g|png|gif|svg)$/,
-        //need to add extra config to url-loader for "image size big or small determination"
-        use: [
-          {
-            loader: 'url-loader',
-            //image > 40000 kb, then save to another file, if not, add to bundle.js
-            options: { limit: 40000 }
-          },
-          'image-webpack-loader'
-        ]
-      }
     ],
-    devServer: {
-      port: WDS_PORT,
-      hot: true,
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-      // historyApiFallback: true
-    }
+    // node: {
+    //   //prevent webpack from injecting moacks to Node native modules
+    //   //that are not required by client
+    //   dgram: 'empty',
+    //   net: 'empty',
+    //   tls: 'empty',
+    //   child_process: 'empty',
+    //   //TODO might not want to disable fs?
+    //   fs: 'empty',
+    // },
   },
-  plugins: [
-    //anything this plugin caught from loaders, will be passed in to ExtractTextPlugin and then be transform into the style.css file
-    new ExtractTextPlugin('style.css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
-    })
-  ]
+  // devServer: {
+  //   port: 8080,
+  //   hot: true,
+  //   headers: {
+  //     'Access-Control-Allow-Origin': '*',
+  //   },
+  //   // historyApiFallback: true
+  // },
+  // plugins: [
+  //   //anything this plugin caught from loaders, will be passed in to ExtractTextPlugin and then be transform into the style.css file
+  //   new ExtractTextPlugin('style.css'),
+  //   new webpack.optimize.CommonsChunkPlugin({
+  //     name: 'vendor'
+  //   })
+  // ]
 };
