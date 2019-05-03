@@ -1,0 +1,102 @@
+[
+  {
+    "platformId": "NA1",
+    "gameId": 2977391646,
+    "champion": 222,
+    "queue": 430,
+    "season": 13,
+    "timestamp": 1550119380675,
+    "role": "DUO_CARRY",
+    "lane": "BOTTOM"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2977365732,
+    "champion": 16,
+    "queue": 450,
+    "season": 13,
+    "timestamp": 1550117982359,
+    "role": "DUO_SUPPORT",
+    "lane": "NONE"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2963818929,
+    "champion": 16,
+    "queue": 450,
+    "season": 13,
+    "timestamp": 1548733408401,
+    "role": "DUO_SUPPORT",
+    "lane": "NONE"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2960948379,
+    "champion": 99,
+    "queue": 400,
+    "season": 13,
+    "timestamp": 1548480650383,
+    "role": "SOLO",
+    "lane": "MID"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2960862907,
+    "champion": 143,
+    "queue": 400,
+    "season": 13,
+    "timestamp": 1548473786853,
+    "role": "DUO_SUPPORT",
+    "lane": "BOTTOM"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2935141603,
+    "champion": 143,
+    "queue": 400,
+    "season": 12,
+    "timestamp": 1545191909433,
+    "role": "DUO_SUPPORT",
+    "lane": "BOTTOM"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2935133432,
+    "champion": 202,
+    "queue": 450,
+    "season": 12,
+    "timestamp": 1545190370540,
+    "role": "DUO_SUPPORT",
+    "lane": "NONE"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2934634069,
+    "champion": 150,
+    "queue": 450,
+    "season": 12,
+    "timestamp": 1545109175870,
+    "role": "DUO_SUPPORT",
+    "lane": "MID"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2934608796,
+    "champion": 103,
+    "queue": 450,
+    "season": 12,
+    "timestamp": 1545107788010,
+    "role": "DUO_SUPPORT",
+    "lane": "NONE"
+  },
+  {
+    "platformId": "NA1",
+    "gameId": 2932499840,
+    "champion": 61,
+    "queue": 450,
+    "season": 12,
+    "timestamp": 1544851038087,
+    "role": "DUO_SUPPORT",
+    "lane": "NONE"
+  }
+]
