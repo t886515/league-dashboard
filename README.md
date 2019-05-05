@@ -1,6 +1,8 @@
-# job-search-helper
+# League Dashboard
 
-start job search helper idea from scratch
+Just for react/styled-components/css practice
 
 * npm install
 * npm start
+
+* npm run server
