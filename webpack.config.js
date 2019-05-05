@@ -1,5 +1,6 @@
 module.exports = {
   entry: ['./src/index.js'],
+  // todo - need to set up production version.... D:
   output: {
     path: __dirname,
     publicPath: '/',

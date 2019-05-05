@@ -1,13 +1,36 @@
 import React, { Component } from 'react';
+import style, { createGlobalStyle } from 'styled-components';
 import { getSummonerInfoBySummonerName } from './api/REST-requests';
 import Header from './components/Header';
 import InputForm from './components/InputForm';
 import MatchLists from './components/MatchLists';
-import {
-  getChampionIconURLById,
-  getChampionNameById
-} from '../static-data/static-data';
+import { FlexWrapper, colors } from './shared-style/sharedStyle';
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${colors.grey5};
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+  }
+`;
+
+const CSSGridLayout = style.div`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-columns: auto;
+  grid-template-areas: "header" "content";
+`;
+
+const ContentWrapper = style.div`
+  grid-area: content;
+  overflow: auto;
+`;
+const AppWrapper = style(FlexWrapper)`
+  align-items: center;
+  height: 100%;
+`;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +58,8 @@ class App extends Component {
   };
 
   retrieveMatchListsOfASummoner = summonerName => {
-    getSummonerInfoBySummonerName('nanananaa', this.matchListsCallback);
-    // getSummonerInfoBySummonerName(summonerName, this.matchListsCallback);
+    // getSummonerInfoBySummonerName('nanananaa', this.matchListsCallback);
+    getSummonerInfoBySummonerName(summonerName, this.matchListsCallback);
   };
 
   matchListsCallback = (err, res, body) => {
@@ -48,13 +71,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <CSSGridLayout>
+        <GlobalStyle />
         <Header />
-        <InputForm onSubmitSummonerName={this.onSubmitSummonerName} />
-        {this.state.matchLists.length !== 0 && (
-          <MatchLists matchLists={this.state.matchLists} />
-        )}
-      </div>
+        <ContentWrapper>
+          <AppWrapper direction="column">
+            <InputForm onSubmitSummonerName={this.onSubmitSummonerName} />
+            {this.state.matchLists.length !== 0 && (
+              <MatchLists matchLists={this.state.matchLists} />
+            )}
+          </AppWrapper>
+        </ContentWrapper>
+      </CSSGridLayout>
     );
   }
 }

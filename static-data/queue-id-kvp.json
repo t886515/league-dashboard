@@ -1,0 +1,223 @@
+{
+  "0": { "queueId": "0", "gameMap": "Custom", "gameDescription": "" },
+  "72": {
+    "queueId": "72",
+    "gameMap": "Howling Abyss",
+    "gameDescription": "1v1 Snowdown Showdown"
+  },
+  "73": {
+    "queueId": "73",
+    "gameMap": "Howling Abyss",
+    "gameDescription": "2v2 Snowdown Showdown"
+  },
+  "75": {
+    "queueId": "75",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "6v6 Hexakill"
+  },
+  "76": {
+    "queueId": "76",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Ultra Rapid Fire"
+  },
+  "78": {
+    "queueId": "78",
+    "gameMap": "Howling Abyss",
+    "gameDescription": "One For All: Mirror Mode"
+  },
+  "83": {
+    "queueId": "83",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Co-op vs AI Ultra Rapid Fire"
+  },
+  "98": {
+    "queueId": "98",
+    "gameMap": "Twisted Treeline",
+    "gameDescription": "6v6 Hexakill"
+  },
+  "100": {
+    "queueId": "100",
+    "gameMap": "Butcher's Bridge",
+    "gameDescription": "5v5 ARAM"
+  },
+  "310": {
+    "queueId": "310",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Nemesis"
+  },
+  "313": {
+    "queueId": "313",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Black Market Brawlers"
+  },
+  "317": {
+    "queueId": "317",
+    "gameMap": "Crystal Scar",
+    "gameDescription": "Definitely Not Dominion"
+  },
+  "325": {
+    "queueId": "325",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "All Random"
+  },
+  "400": {
+    "queueId": "400",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "5v5 Draft Pick"
+  },
+  "420": {
+    "queueId": "420",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "5v5 Ranked Solo"
+  },
+  "430": {
+    "queueId": "430",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "5v5 Blind Pick"
+  },
+  "440": {
+    "queueId": "440",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "5v5 Ranked Flex"
+  },
+  "450": {
+    "queueId": "450",
+    "gameMap": "Howling Abyss",
+    "gameDescription": "5v5 ARAM"
+  },
+  "460": {
+    "queueId": "460",
+    "gameMap": "Twisted Treeline",
+    "gameDescription": "3v3 Blind Pick"
+  },
+  "470": {
+    "queueId": "470",
+    "gameMap": "Twisted Treeline",
+    "gameDescription": "3v3 Ranked Flex"
+  },
+  "600": {
+    "queueId": "600",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Blood Hunt Assassin"
+  },
+  "610": {
+    "queueId": "610",
+    "gameMap": "Cosmic Ruins",
+    "gameDescription": "Dark Star: Singularity"
+  },
+  "700": {
+    "queueId": "700",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Clash"
+  },
+  "800": {
+    "queueId": "800",
+    "gameMap": "Twisted Treeline",
+    "gameDescription": "Co-op vs. AI Intermediate Bot"
+  },
+  "810": {
+    "queueId": "810",
+    "gameMap": "Twisted Treeline",
+    "gameDescription": "Co-op vs. AI Intro Bot"
+  },
+  "820": {
+    "queueId": "820",
+    "gameMap": "Twisted Treeline",
+    "gameDescription": "Co-op vs. AI Beginner Bot"
+  },
+  "830": {
+    "queueId": "830",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Co-op vs. AI Intro Bot"
+  },
+  "840": {
+    "queueId": "840",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Co-op vs. AI Beginner Bot"
+  },
+  "850": {
+    "queueId": "850",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Co-op vs. AI Intermediate Bot"
+  },
+  "900": {
+    "queueId": "900",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "ARURF"
+  },
+  "910": {
+    "queueId": "910",
+    "gameMap": "Crystal Scar",
+    "gameDescription": "Ascension"
+  },
+  "920": {
+    "queueId": "920",
+    "gameMap": "Howling Abyss",
+    "gameDescription": "Legend of the Poro King"
+  },
+  "940": {
+    "queueId": "940",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Nexus Siege"
+  },
+  "950": {
+    "queueId": "950",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Doom Bots Voting"
+  },
+  "960": {
+    "queueId": "960",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Doom Bots Standard"
+  },
+  "980": {
+    "queueId": "980",
+    "gameMap": "Valoran City Park",
+    "gameDescription": "Star Guardian Invasion: Normal"
+  },
+  "990": {
+    "queueId": "990",
+    "gameMap": "Valoran City Park",
+    "gameDescription": "Star Guardian Invasion: Onslaught"
+  },
+  "1000": {
+    "queueId": "1000",
+    "gameMap": "Overcharge",
+    "gameDescription": "PROJECT: Hunters"
+  },
+  "1010": {
+    "queueId": "1010",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "Snow ARURF"
+  },
+  "1020": {
+    "queueId": "1020",
+    "gameMap": "Summoner's Rift",
+    "gameDescription": "One for All"
+  },
+  "1030": {
+    "queueId": "1030",
+    "gameMap": "Crash Site",
+    "gameDescription": "Odyssey Extraction: Intro"
+  },
+  "1040": {
+    "queueId": "1040",
+    "gameMap": "Crash Site",
+    "gameDescription": "Odyssey Extraction: Cadet"
+  },
+  "1050": {
+    "queueId": "1050",
+    "gameMap": "Crash Site",
+    "gameDescription": "Odyssey Extraction: Crewmember"
+  },
+  "1060": {
+    "queueId": "1060",
+    "gameMap": "Crash Site",
+    "gameDescription": "Odyssey Extraction: Captain"
+  },
+  "1070": {
+    "queueId": "1070",
+    "gameMap": "Crash Site",
+    "gameDescription": "Odyssey Extraction: Onslaught"
+  }
+}

@@ -1,10 +1,22 @@
 import React from 'react';
-import Match from './Match';
+import style from 'styled-components';
+import PlayerState from './PlayerStat';
 
-const TeamPlaterStats = props => {
+const TeamPlayerStatsWrapper = style.div`
+  display: flex;
+  flex-direction: column;
+`;
+const TeamPlayerStats = props => {
   return (
-    <div className="TeamPlaterStats">{props.participant.summonerName}</div>
+    <TeamPlayerStatsWrapper>
+      {props.participants.map(participant => (
+        <PlayerState
+          key={participant.participantId}
+          participant={participant}
+        />
+      ))}
+    </TeamPlayerStatsWrapper>
   );
 };
 
-export default TeamPlaterStats;
+export default TeamPlayerStats;

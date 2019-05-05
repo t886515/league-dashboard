@@ -1,49 +1,46 @@
 import React from 'react';
-import { getItemIconURLById } from '../../static-data/static-data';
+import { FlexWrapper } from '../shared-style/sharedStyle';
+import {
+  getChampionIconURLById,
+  getChampionNameById,
+  getSummonerSpellURLById
+} from '../../static-data/static-data';
 import style from 'styled-components';
 
 // styling component
-const SelectedPlayerStatWrapper = style.div`
-  display: flex;
-  flex-direction: column;
-  
+const ChampionIconImage = style.img`
+  max-width: 80px;
+  max-height: 80px;
 `;
-const ItemsImageWrapper = style.div`
-  max-width: 100px;
-  display: flex;
-  flex-direction: row;
+const ItemImage = style.img`
+  max-width: 30px;
+  max-height: 30px;
+`;
+
+const SelectedPlayerStatWrapper = style(FlexWrapper)`
+  margin: 10px;
 `;
 // actual component
-const getItemLists = stats => {
-  const itemLists = [];
-  for (let i = 0; i < 6; i++) {
-    itemLists.push(stats[`item${i + 1}`]);
-  }
-  return itemLists;
-};
+
 const SelectedPlayerStat = props => {
   const { selectedSummonerMatchInfo } = props;
-  const { stats, summonerName, champion } = selectedSummonerMatchInfo;
-  const { kills, deaths, assists } = stats;
-  const itemLists = getItemLists(stats);
+  const { stats, champion, spell1Id, spell2Id } = selectedSummonerMatchInfo;
+  const { kills, deaths, assists, champLevel, totalMinionsKilled } = stats;
 
   return (
-    <SelectedPlayerStatWrapper>
-      <span>{summonerName}</span>
-      <span>{champion}</span>
-      <ItemsImageWrapper>
-        {itemLists &&
-          itemLists.map(itemId => {
-            if (itemId === 0) {
-              itemId = 3637;
-            }
-            return <img src={getItemIconURLById(itemId)} />;
-          })}
-      </ItemsImageWrapper>
+    <SelectedPlayerStatWrapper direction="column">
+      <span>{getChampionNameById(champion)}</span>
+      <ChampionIconImage src={getChampionIconURLById(champion)} />
 
       <span>
         {kills}/{deaths}/{assists}
       </span>
+      <span>LV {champLevel}</span>
+      <span>CS {totalMinionsKilled}</span>
+      <FlexWrapper>
+        <ItemImage src={getSummonerSpellURLById(spell1Id)} />
+        <ItemImage src={getSummonerSpellURLById(spell2Id)} />
+      </FlexWrapper>
     </SelectedPlayerStatWrapper>
   );
 };
