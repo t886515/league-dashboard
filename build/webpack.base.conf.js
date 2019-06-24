@@ -18,8 +18,8 @@ const createLintingRule = () => ({
   include: [resolve('src'), resolve(test)],
   options: {
     formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay,
-  },
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
 });
 
 //each string will be the name of the library of vendor
@@ -32,7 +32,7 @@ module.exports = {
   //couple different entry points to define multiple bundles with object
   // key = output js file name, and value as the entry file
   entry: {
-    bundle: './src/index.js',
+    bundle: './src/index.js'
     // vendor: VENDOR_LIBS
   },
   // entry: './src/index/js',
@@ -51,7 +51,7 @@ module.exports = {
     publicPath:
       process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath,
+        : config.dev.assetsPublicPath
   },
   //webpack 1 these are called loaders. webpack 2+ are called module
   resolve: {
@@ -61,8 +61,8 @@ module.exports = {
     //allow import SOME_FILES from '@/components' --> meaning start looking from src, so no more relative file path!! Always looking
     //from outside! No more confusion...
     alias: {
-      '@': resolve('src'),
-    },
+      '@': resolve('src')
+    }
   },
   module: {
     rules: [
@@ -84,8 +84,8 @@ module.exports = {
         include: [
           resolve('src'),
           resolve('test'),
-          resolve('node_modules/webpack-dev-server/client'),
-        ],
+          resolve('node_modules/webpack-dev-server/client')
+        ]
       },
       {
         //$ for end of string, ? for either end e or eg
@@ -97,12 +97,12 @@ module.exports = {
             //image > 40000 kb, then save to another file, if not, add to bundle.js
             options: {
               limit: 40000,
-              name: utils.assetsPath('img/[name].[hash:7].[ext]'),
-            },
+              name: utils.assetsPath('img/[name].[hash:7].[ext]')
+            }
           },
           //resize/compress images for us if necessary
-          'image-webpack-loader',
-        ],
+          'image-webpack-loader'
+        ]
       },
       //checking on audio/video assets
       {
@@ -110,8 +110,8 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 40000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]'),
-        },
+          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+        }
       },
       //for special font type files
       // {
@@ -125,7 +125,7 @@ module.exports = {
       //for supporting graphql query files
       {
         test: /\.(gql|graphql)$/,
-        loader: 'graphql-tag/loader',
+        loader: 'graphql-tag/loader'
       },
       {
         //["style-loader", "css-loader"]
@@ -145,21 +145,21 @@ module.exports = {
           //this ensure the style will still be applied to the html file using style-loader if things went wrong with
           //extract text plugin?
           fallback: 'style-loader',
-          use: 'css-loader',
-        }),
-      },
-    ],
-    // node: {
-    //   //prevent webpack from injecting moacks to Node native modules
-    //   //that are not required by client
-    //   dgram: 'empty',
-    //   net: 'empty',
-    //   tls: 'empty',
-    //   child_process: 'empty',
-    //   //TODO might not want to disable fs?
-    //   fs: 'empty',
-    // },
+          use: 'css-loader'
+        })
+      }
+    ]
   },
+  node: {
+    //prevent webpack from injecting moacks to Node native modules
+    //that are not required by client
+    dgram: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty',
+    //TODO might not want to disable fs?
+    fs: 'empty'
+  }
   // devServer: {
   //   port: 8080,
   //   hot: true,
